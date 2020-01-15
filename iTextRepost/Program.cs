@@ -60,7 +60,18 @@ namespace iTextRepost
             serie.Alignment = Element.ALIGN_CENTER;
             document.Add(serie);
 
-            var linea = new Paragraph("..................................................................", _standardFont);
+            var linea = new Paragraph("...................................................................................................................", _standardFont);
+            linea.Alignment = Element.ALIGN_CENTER;
+            document.Add(linea);
+
+            var nombres = new Paragraph("DNI/NOMBRE: 47680041 JEDION MELBIN PAUCAR CARDENAS ", _standardFont);
+            nombres.Alignment = Element.ALIGN_CENTER;
+            document.Add(nombres);
+
+            var direccion = new Paragraph("DIRECCION: AV LOS FICUS ATE VITARTE LIMA PERU ", _standardFont);
+            direccion.Alignment = Element.ALIGN_CENTER;
+            document.Add(direccion);
+
             linea.Alignment = Element.ALIGN_CENTER;
             document.Add(linea);
 
