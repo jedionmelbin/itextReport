@@ -24,11 +24,12 @@ namespace iTextRepost
 
             PdfWriter writer = PdfWriter.GetInstance(document, fs);
 
-            //document.AddAuthor("Micke Blomquist");
-            //document.AddCreator("Sample application using iTextSharp");
-            //document.AddKeywords("PDF tutorial education");
-            //document.AddSubject("Document subject - Describing the steps creating a PDF document");
-            //document.AddTitle("The document title - PDF creation using iTextSharp");
+            document.AddAuthor("Jedion Melbin");
+            document.AddCreator("Sample application using iTextSharp");
+            document.AddKeywords("PDF tutorial education");
+            document.AddSubject("Document subject - Describing the steps creating a PDF document");
+            document.AddTitle("The document title - PDF creation using iTextSharp");
+        
 
             document.Open();
             var titleFont = FontFactory.GetFont("Courier", 4, Font.BOLD);
@@ -60,7 +61,7 @@ namespace iTextRepost
             serie.Alignment = Element.ALIGN_CENTER;
             document.Add(serie);
 
-            var linea = new Paragraph("...................................................................................................................", _standardFont);
+            var linea = new Paragraph(Constant.LINEA, _standardFont);
             linea.Alignment = Element.ALIGN_CENTER;
             document.Add(linea);
 
