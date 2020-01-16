@@ -4,5 +4,34 @@
 
 
 <div class="row">
- 
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="contentTable">
+         
+        </tbody>
+    </table>
 </div>
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $.post('@Url.Action("ListPerson")', function (response) {
+
+                var content = "";
+                $.each(response, function (item, value) {
+                     content += "<tr><td>" + value.PersonID
+                        + "</td><td>" + value.FirstName + "</td><td>"
+                        + value.LastName + "</td><td><input type='file' name='file'" + item + "></td></tr>";
+                   
+                });
+                 $("#contentTable").html(content);
+            });
+        });
+    </script>
+}
