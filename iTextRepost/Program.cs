@@ -29,7 +29,7 @@ namespace iTextRepost
             document.AddKeywords("PDF tutorial education");
             document.AddSubject("Document subject - Describing the steps creating a PDF document");
             document.AddTitle("The document title - PDF creation using iTextSharp");
-        
+
 
             document.Open();
             var titleFont = FontFactory.GetFont("Courier", 4, Font.BOLD);
@@ -45,7 +45,7 @@ namespace iTextRepost
 
             var address = new Paragraph("AV URUBAMBA 513 ATE VITARTE URB SAN JUAN DE LIMA PERU", _standardFont);
             address.Alignment = Element.ALIGN_CENTER;
-           // address.Font = titleFont;
+            // address.Font = titleFont;
             document.Add(address);
 
             var telefono = new Paragraph("Telefono: 940621487", _standardFont);
@@ -76,42 +76,68 @@ namespace iTextRepost
             linea.Alignment = Element.ALIGN_CENTER;
             document.Add(linea);
 
-            PdfPTable tblPrueba = new PdfPTable(3);
+            float[] widths = new float[] { 0.5F, 0.2F, 0.2F, 0.3F, 0.2F};
+            PdfPTable tblPrueba = new PdfPTable(5);
+            tblPrueba.SetWidths(widths);
             tblPrueba.WidthPercentage = 100;
 
             // Configuramos el título de las columnas de la tabla
-            PdfPCell clNombre = new PdfPCell(new Phrase("Nombre", _standardFont));
-            clNombre.BorderWidth = 0;
-            clNombre.BorderWidthBottom = 0.75f;
+            PdfPCell clDescripcion = new PdfPCell(new Phrase("Descripción", _standardFont));
+            clDescripcion.BorderWidth = 0;
+  
 
-            PdfPCell clApellido = new PdfPCell(new Phrase("Apellido", _standardFont));
-            clApellido.BorderWidth = 0;
-            clApellido.BorderWidthBottom = 0.75f;
+            PdfPCell clCantidad = new PdfPCell(new Phrase("Cant.", _standardFont));
+            clCantidad.BorderWidth = 0;
+            //clApellido.BorderWidthBottom = 0.75f;
 
-            PdfPCell clPais = new PdfPCell(new Phrase("País", _standardFont));
-            clPais.BorderWidth = 0;
-            clPais.BorderWidthBottom = 0.75f;
+            PdfPCell clUm = new PdfPCell(new Phrase("UM", _standardFont));
+            clUm.BorderWidth = 0;
+
+            PdfPCell clPrecioUnit = new PdfPCell(new Phrase("P. Unit", _standardFont));
+            clPrecioUnit.BorderWidth = 0;
+
+            PdfPCell clTotal = new PdfPCell(new Phrase("Total", _standardFont));
+            clTotal.BorderWidth = 0;
+
+            //clPais.BorderWidthBottom = 0.75f;
 
             // Añadimos las celdas a la tabla
-            tblPrueba.AddCell(clNombre);
-            tblPrueba.AddCell(clApellido);
-            tblPrueba.AddCell(clPais);
+            tblPrueba.AddCell(clDescripcion);
+            tblPrueba.AddCell(clCantidad);
+            tblPrueba.AddCell(clUm);
+            tblPrueba.AddCell(clPrecioUnit);
+            tblPrueba.AddCell(clTotal);
 
             // Llenamos la tabla con información
-            clNombre = new PdfPCell(new Phrase("Roberto", _standardFont));
-            clNombre.BorderWidth = 0;
+            clDescripcion = new PdfPCell(new Phrase("Menu producto", _standardFont));
+            clDescripcion.BorderWidth = 0;
 
-            clApellido = new PdfPCell(new Phrase("Torres", _standardFont));
-            clApellido.BorderWidth = 0;
+            clCantidad = new PdfPCell(new Phrase("1.0", _standardFont));
+            clCantidad.BorderWidth = 0;
 
-            clPais = new PdfPCell(new Phrase("Puerto Rico", _standardFont));
-            clPais.BorderWidth = 0;
+            clUm = new PdfPCell(new Phrase("NIU", _standardFont));
+            clUm.BorderWidth = 0;
+
+            clPrecioUnit = new PdfPCell(new Phrase("25.30", _standardFont));
+            clPrecioUnit.BorderWidth = 0;
+
+            clTotal = new PdfPCell(new Phrase("35.30", _standardFont));
+            clTotal.BorderWidth = 0;
 
             // Añadimos las celdas a la tabla
-            tblPrueba.AddCell(clNombre);
-            tblPrueba.AddCell(clApellido);
-            tblPrueba.AddCell(clPais);
+            tblPrueba.AddCell(clDescripcion);
+            tblPrueba.AddCell(clCantidad);
+            tblPrueba.AddCell(clUm);
+            tblPrueba.AddCell(clPrecioUnit);
+            tblPrueba.AddCell(clTotal);
+
             document.Add(tblPrueba);
+
+            linea.Alignment = Element.ALIGN_CENTER;
+            document.Add(linea);
+
+            linea.Alignment = Element.ALIGN_CENTER;
+            document.Add(linea);
 
             document.Close();
             writer.Close();
